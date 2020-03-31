@@ -1,4 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:championizer_reforged/card.dart';
+import 'package:championizer_reforged/container_zer.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Championizer'),
     );
   }
 }
@@ -47,17 +51,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  List<String> urls = [
+    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/10',
+    'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/103627722/original/56460ad4000e9cd6809a30fab27cb088dbb67dd4/turn-your-initial-into-a-zelda-logo.png',
+    'https://via.placeholder.com/120',
+    'https://via.placeholder.com/230',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -68,46 +68,54 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: CachedNetworkImage(
+                    imageUrl: 'https://fiverr-auto/gigs/103627722/original/56460ad4000e9cd6809a30fab27cb088dbb67dd4/turn-your-initial-into-a-zelda-logo.png',
+                    errorWidget: (context, url, error) => Container(
+                          color: Colors.black26,
+                          child: Align(
+                            alignment: Alignment.topCenter,
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  top: 25),
+                              child: Icon(
+                                Icons.camera_alt,
+                                color: Colors.white,
+                                size: 70.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                    placeholder: (context, url) => Container(
+                          transform: Matrix4.translationValues(
+                              0.0, 25, 0.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [CircularProgressIndicator()],
+                          ),
+                        ),
+                    fit: BoxFit.cover)
+        ));
+  }
+
+  List<Widget> _buildItems() {
+    List<Widget> items = [];
+
+    urls.forEach((String aUrl) {
+      items.add(
+        GameCardLayout(
+          aGame: Game(identifier: 0, name: 'Test')
+        )
+      );
+    });
+
+    return items;
   }
 }
