@@ -14,8 +14,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Championizer',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.blue,
+          primaryColor: Colors.white,
+          splashColor: Colors.white10,
+          appBarTheme: AppBarTheme(
+            elevation: 0.0, 
+          )),
       home: MyHomePage(title: 'Championizer'),
     );
   }
@@ -36,21 +40,28 @@ class _MyHomePageState extends State<MyHomePage> {
       'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg';
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(title: Text("Championizer"), actions: <Widget>[
+          // action button
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {},
+          )
+        ]),
         body: Column(
-      children: <Widget>[
-        Center(child: ContainerZer(url: url)),
-        RaisedButton(
-          onPressed: () {
-            setState(() {
-              championsImageURLs.shuffle();
-              url = championsImageURLs.elementAt(0);
-            });
-            print(url);
-          },
-          child:
-              const Text('Explore the rift !', style: TextStyle(fontSize: 20)),
-        ),
-      ],
-    ));
+          children: <Widget>[
+            Center(child: ContainerZer(url: url)),
+            RaisedButton(
+              onPressed: () {
+                setState(() {
+                  championsImageURLs.shuffle();
+                  url = championsImageURLs.elementAt(0);
+                });
+                print(url);
+              },
+              child: const Text('Explore the rift !',
+                  style: TextStyle(fontSize: 20)),
+            ),
+          ],
+        ));
   }
 }
