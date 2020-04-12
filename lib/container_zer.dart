@@ -18,7 +18,7 @@ class _ContainerZerState extends State<ContainerZer> {
           width: MediaQuery.of(context).size.width * 0.85,
           height: MediaQuery.of(context).size.height * 0.75,
           decoration: BoxDecoration(
-              color: Colors.blueGrey[50],
+              color: Colors.black,
               borderRadius: BorderRadius.all(Radius.circular(50.0)),
               boxShadow: [
                 new BoxShadow(
@@ -46,7 +46,7 @@ class _ContainerZerState extends State<ContainerZer> {
                       ),
                     ]),
               ),
-              placeholder: (context, url) => CircularProgressIndicator(),
+              //placeholder: (context, url) => CircularProgressIndicator(),
               errorWidget: (context, url, error) => Icon(Icons.error),
             ),
           ),
