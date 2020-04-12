@@ -18,17 +18,27 @@ class _ContainerZerState extends State<ContainerZer> {
           width: MediaQuery.of(context).size.width * 0.85,
           height: MediaQuery.of(context).size.height * 0.85,
           decoration: BoxDecoration(
-              color: Colors.lightGreen,
-              borderRadius: BorderRadius.all(Radius.circular(20.0)),
-              image: new DecorationImage(
-                  image: new CachedNetworkImageProvider(widget.url))),
-          /* child: Center(
+            color: Colors.lightGreen,
+            borderRadius: BorderRadius.all(Radius.circular(50.0)),
+            /* image: new DecorationImage(
+                  image: new CachedNetworkImageProvider(widget.url)) */
+          ),
+          child: Center(
             child: CachedNetworkImage(
               imageUrl: widget.url,
+              imageBuilder: (context, imageProvider) => Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+              ),
               placeholder: (context, url) => CircularProgressIndicator(),
               errorWidget: (context, url, error) => Icon(Icons.error),
             ),
-          ), */
+          ),
         ),
       ],
     );
