@@ -1,10 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class ContainerZer extends StatelessWidget {
+class ContainerZer extends StatefulWidget {
   final String url;
   const ContainerZer({Key key, this.url}) : super(key: key);
 
+  @override
+  _ContainerZerState createState() => _ContainerZerState();
+}
+
+class _ContainerZerState extends State<ContainerZer> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,7 +22,7 @@ class ContainerZer extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
           child: Center(
             child: CachedNetworkImage(
-              imageUrl: url,
+              imageUrl: widget.url,
               placeholder: (context, url) => CircularProgressIndicator(),
               errorWidget: (context, url, error) => Icon(Icons.error),
             ),

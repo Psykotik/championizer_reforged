@@ -1,6 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'dart:core';
 import 'package:championizer_reforged/container_zer.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:championizer_reforged/data/championsImage.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,13 +35,47 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<String> urls = [
-    'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg',
-    'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Draven_0.jpg',
-    'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ezreal_0.jpg',
-    'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/TahmKench_0.jpg',
-  ];
-  String url;
+  String riotApiChampionUrl =
+      'http://ddragon.leagueoflegends.com/cdn/10.7.1/data/en_US/champion.json';
+
+  String riotApiResponse = "";
+
+  Future<String> loadAsset() async {
+    return await rootBundle.loadString('assets/mock.json');
+  }
+
+  Future<List<Champion>> fetchChampionListFromAPI() async {
+    final response = await http.get(riotApiChampionUrl);
+    print(response.body);
+
+    List responseJson = json.decode(response.body.toString());
+    List<Champion> champList = createChampionList(responseJson);
+    return champList;
+  }
+
+  void testFunction() {
+    print(loadAsset());
+    // var jsonData = champJson;
+// var parsedJson = json.decode(jsonData);
+// var user = User(parsedJson);
+// print('${user.name} is ${user.alias}');
+  }
+
+  List<Champion> createChampionList(List data) {
+    List<Champion> list = new List();
+    for (int i = 0; i < data.length; i++) {
+      String name = data[i]["name"];
+      int id = data[i]["key"];
+      String url = "url";
+      Champion champ = new Champion(name: name, id: id, imageUrl: url);
+      list.add(champ);
+      print(champ);
+    }
+    return list;
+  }
+  
+  String url =
+      'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg';
 
   @override
   Widget build(BuildContext context) {
@@ -48,22 +87,39 @@ class _MyHomePageState extends State<MyHomePage> {
           icon: Icon(Icons.loop),
           tooltip: 'Get a new random champion !',
           onPressed: () {
-            urls.shuffle();
-            url = urls.elementAt(0);
+            //fetchChampionListFromAPI();
+            setState(() {
+              championsImageURLs.shuffle();
+              url = championsImageURLs.elementAt(0);
+            });
             print(url);
+          },
+        ),
+        IconButton(
+          icon: Icon(Icons.cake),
+          tooltip: 'Get a new random champion !',
+          onPressed: () {
+            testFunction();
           },
         )
       ],
     ));
   }
+}
 
-  List<Widget> _buildItems() {
-    List<Widget> items = [];
+class Champion {
+  String name;
+  int id;
+  String imageUrl;
 
-    urls.forEach((String aUrl) {
-      items.add(ContainerZer(url: aUrl));
-    });
+  Champion({this.name, this.id, this.imageUrl});
+}
 
-    return items;
+class User {
+  String name;
+  String alias;
+  User(Map<String, dynamic> data) {
+    name = data['name'];
+    alias = data['alias'];
   }
 }
