@@ -2,9 +2,14 @@ import 'dart:core';
 import 'package:championizer_reforged/container_zer.dart';
 import 'package:flutter/material.dart';
 import 'package:championizer_reforged/data/championsImage.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(new MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +23,7 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.white,
           splashColor: Colors.white10,
           appBarTheme: AppBarTheme(
-            elevation: 0.0, 
+            elevation: 0.0,
           )),
       home: MyHomePage(title: 'Championizer'),
     );
