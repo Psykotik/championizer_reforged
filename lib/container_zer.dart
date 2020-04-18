@@ -24,6 +24,7 @@ class _ContainerZerState extends State<ContainerZer> {
                 new BoxShadow(
                   color: Colors.black,
                   blurRadius: 10.0,
+                  spreadRadius: 5.0,
                 ),
               ]
               /* image: new DecorationImage(
@@ -39,12 +40,6 @@ class _ContainerZerState extends State<ContainerZer> {
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(50),
-                  /* boxShadow: [
-                      new BoxShadow(
-                        color: Colors.black,
-                        blurRadius: 10.0,
-                      ),
-                    ] */
                 ),
               ),
               //placeholder: (context, url) => CircularProgressIndicator(),

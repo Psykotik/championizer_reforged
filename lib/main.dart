@@ -59,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Column(
           children: <Widget>[
             Center(child: ContainerZer(url: url)),
+            SizedBox(height: 15),
             RaisedButton(
               onPressed: () {
                 setState(() {
