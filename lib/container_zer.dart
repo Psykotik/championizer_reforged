@@ -15,15 +15,23 @@ class _ContainerZerState extends State<ContainerZer> {
     return Column(
       children: <Widget>[
         Container(
+          height: MediaQuery.of(context).size.height * 0.03,
+        ),
+        Container(
           width: MediaQuery.of(context).size.width * 0.85,
-          height: MediaQuery.of(context).size.height * 0.75,
+          height: MediaQuery.of(context).size.height * 0.70,
           decoration: BoxDecoration(
               color: Colors.black,
               borderRadius: BorderRadius.all(Radius.circular(50.0)),
               boxShadow: [
                 new BoxShadow(
                   color: Colors.black,
+<<<<<<< HEAD
+                  blurRadius: 15.0,
+=======
                   blurRadius: 10.0,
+                  spreadRadius: 5.0,
+>>>>>>> f4b9dff0dc31b73f9d4dba622e1185cc633f0d19
                 ),
               ]
               /* image: new DecorationImage(
@@ -34,23 +42,21 @@ class _ContainerZerState extends State<ContainerZer> {
               imageUrl: widget.url,
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: imageProvider,
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      new BoxShadow(
-                        color: Colors.black,
-                        blurRadius: 10.0,
-                      ),
-                    ]),
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(50),
+                ),
               ),
               //placeholder: (context, url) => CircularProgressIndicator(),
               errorWidget: (context, url, error) => Icon(Icons.error),
             ),
           ),
         ),
+        Container(
+          height: MediaQuery.of(context).size.height * 0.02,
+        )
       ],
     );
   }

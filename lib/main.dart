@@ -3,6 +3,7 @@ import 'package:championizer_reforged/container_zer.dart';
 import 'package:flutter/material.dart';
 import 'package:championizer_reforged/data/championsImage.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,16 +46,27 @@ class _MyHomePageState extends State<MyHomePage> {
       'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg';
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Championizer"), actions: <Widget>[
-          // action button
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {},
-          )
-        ]),
+        //extendBodyBehindAppBar: true,
+        appBar: AppBar(
+            backgroundColor: Color(0x00000000),
+            title: Text("Championizer"),
+            actions: <Widget>[
+              // action button
+              IconButton(
+                icon: Icon(Icons.settings),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => new ParameterScreen()),
+                  );
+                },
+              )
+            ]),
         body: Column(
           children: <Widget>[
             Center(child: ContainerZer(url: url)),
+            SizedBox(height: 15),
             RaisedButton(
               onPressed: () {
                 setState(() {
@@ -68,5 +80,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ));
+  }
+}
+
+class ParameterScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext ctxt) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Settings"),
+      ),
+      body: RaisedButton(
+        onPressed: () {
+          DefaultCacheManager manager = new DefaultCacheManager();
+          manager.emptyCache(); //clears all data in cache.
+        },
+        child: const Text('Clear the cache', style: TextStyle(fontSize: 20)),
+      ),
+    );
   }
 }
