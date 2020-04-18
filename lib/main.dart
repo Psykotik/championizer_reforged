@@ -3,6 +3,7 @@ import 'package:championizer_reforged/container_zer.dart';
 import 'package:flutter/material.dart';
 import 'package:championizer_reforged/data/championsImage.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,7 +54,13 @@ class _MyHomePageState extends State<MyHomePage> {
               // action button
               IconButton(
                 icon: Icon(Icons.settings),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => new ParameterScreen()),
+                  );
+                },
               )
             ]),
         body: Column(
@@ -73,5 +80,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ));
+  }
+}
+
+class ParameterScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext ctxt) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Settings"),
+      ),
+      body: RaisedButton(
+        onPressed: () {
+          DefaultCacheManager manager = new DefaultCacheManager();
+          manager.emptyCache(); //clears all data in cache.
+        },
+        child: const Text('Clear the cache', style: TextStyle(fontSize: 20)),
+      ),
+    );
   }
 }
