@@ -34,17 +34,18 @@ class _ContainerZerState extends State<ContainerZer> {
               imageUrl: widget.url,
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: imageProvider,
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(50),
+                  /* boxShadow: [
                       new BoxShadow(
                         color: Colors.black,
                         blurRadius: 10.0,
                       ),
-                    ]),
+                    ] */
+                ),
               ),
               //placeholder: (context, url) => CircularProgressIndicator(),
               errorWidget: (context, url, error) => Icon(Icons.error),

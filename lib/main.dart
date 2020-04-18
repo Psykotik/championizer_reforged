@@ -45,13 +45,17 @@ class _MyHomePageState extends State<MyHomePage> {
       'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg';
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Championizer"), actions: <Widget>[
-          // action button
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {},
-          )
-        ]),
+        //extendBodyBehindAppBar: true,
+        appBar: AppBar(
+            backgroundColor: Color(0x00000000),
+            title: Text("Championizer"),
+            actions: <Widget>[
+              // action button
+              IconButton(
+                icon: Icon(Icons.settings),
+                onPressed: () {},
+              )
+            ]),
         body: Column(
           children: <Widget>[
             Center(child: ContainerZer(url: url)),
