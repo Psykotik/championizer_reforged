@@ -26,12 +26,8 @@ class _ContainerZerState extends State<ContainerZer> {
               boxShadow: [
                 new BoxShadow(
                   color: Colors.black,
-<<<<<<< HEAD
                   blurRadius: 15.0,
-=======
-                  blurRadius: 10.0,
                   spreadRadius: 5.0,
->>>>>>> f4b9dff0dc31b73f9d4dba622e1185cc633f0d19
                 ),
               ]
               /* image: new DecorationImage(
