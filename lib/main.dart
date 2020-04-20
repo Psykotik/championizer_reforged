@@ -1,9 +1,10 @@
 import 'dart:core';
-import 'package:championizer_reforged/container_zer.dart';
+import 'package:championizer_reforged/ui_view/randomChampionImage.dart';
 import 'package:flutter/material.dart';
 import 'package:championizer_reforged/data/championsImage.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:championizer_reforged/style/colors.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,9 +42,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  @override
   String url =
       'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg';
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         //extendBodyBehindAppBar: true,
@@ -65,9 +66,50 @@ class _MyHomePageState extends State<MyHomePage> {
             ]),
         body: Column(
           children: <Widget>[
-            Center(child: ContainerZer(url: url)),
+            Center(child: RandomChampionImage(url: url)),
             SizedBox(height: 15),
+            /* Padding(
+              padding: const EdgeInsets.only(
+                  left: 16, right: 16, bottom: 16, top: 8),
+              child: Container(
+                height: 48,
+                decoration: BoxDecoration(
+                  color: Colors.blueAccent,
+                  borderRadius: const BorderRadius.all(Radius.circular(24.0)),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.6),
+                      blurRadius: 8,
+                      offset: const Offset(4, 4),
+                    ),
+                  ],
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: const BorderRadius.all(Radius.circular(24.0)),
+                    highlightColor: Colors.transparent,
+                    onTap: () {
+                      //Navigator.pop(context);
+                    },
+                    child: Center(
+                      child: Text(
+                        'Apply',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18,
+                            color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ), */
             RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(18.0),
+                  side: BorderSide(color: Colors.red)),
+              color: Color(0x03A9F4),
               onPressed: () {
                 setState(() {
                   championsImageURLs.shuffle();

@@ -1,15 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:championizer_reforged/data/championsImage.dart';
 import 'package:flutter/material.dart';
 
-class ContainerZer extends StatefulWidget {
+class RandomChampionImage extends StatefulWidget {
   final String url;
-  const ContainerZer({Key key, this.url}) : super(key: key);
+  const RandomChampionImage({Key key, this.url}) : super(key: key);
 
   @override
-  _ContainerZerState createState() => _ContainerZerState();
+  _RandomChampionImageState createState() => _RandomChampionImageState();
 }
 
-class _ContainerZerState extends State<ContainerZer> {
+class _RandomChampionImageState extends State<RandomChampionImage> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,8 +27,9 @@ class _ContainerZerState extends State<ContainerZer> {
               boxShadow: [
                 new BoxShadow(
                   color: Colors.black,
+                  offset: const Offset(4, 4),
                   blurRadius: 15.0,
-                  spreadRadius: 5.0,
+                  //spreadRadius: 5.0,
                 ),
               ]
               /* image: new DecorationImage(
