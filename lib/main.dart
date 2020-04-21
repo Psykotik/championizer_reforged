@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'package:championizer_reforged/ui_view/parameterScreen.dart';
 import 'package:championizer_reforged/ui_view/randomChampionImage.dart';
 import 'package:flutter/material.dart';
 import 'package:championizer_reforged/data/championsImage.dart';
@@ -67,78 +68,47 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Column(
           children: <Widget>[
             Center(child: RandomChampionImage(url: url)),
-            SizedBox(height: 15),
-            /* Padding(
-              padding: const EdgeInsets.only(
-                  left: 16, right: 16, bottom: 16, top: 8),
+            //SizedBox(height: 15),
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 16, right: 16, bottom: 8, top: 8),
               child: Container(
                 height: 48,
                 decoration: BoxDecoration(
-                  color: Colors.blueAccent,
+                  color: Colors.blue,
                   borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.6),
-                      blurRadius: 8,
+                      color: Colors.grey,
+                      blurRadius: 12,
                       offset: const Offset(4, 4),
                     ),
                   ],
                 ),
                 child: Material(
                   color: Colors.transparent,
-                  child: InkWell(
-                    borderRadius: const BorderRadius.all(Radius.circular(24.0)),
-                    highlightColor: Colors.transparent,
-                    onTap: () {
-                      //Navigator.pop(context);
-                    },
+                  child: FlatButton(
                     child: Center(
                       child: Text(
-                        'Apply',
+                        'Get a new champion !',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 18,
                             color: Colors.white),
                       ),
                     ),
+                    onPressed: () {
+                      setState(() {
+                        championsImageURLs.shuffle();
+                        url = championsImageURLs.elementAt(0);
+                      });
+                      print("New champion : " + url);
+                    },
                   ),
                 ),
               ),
-            ), */
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(18.0),
-                  side: BorderSide(color: Colors.red)),
-              color: Color(0x03A9F4),
-              onPressed: () {
-                setState(() {
-                  championsImageURLs.shuffle();
-                  url = championsImageURLs.elementAt(0);
-                });
-                print(url);
-              },
-              child: const Text('Explore the rift !',
-                  style: TextStyle(fontSize: 20)),
             ),
           ],
         ));
-  }
-}
-
-class ParameterScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext ctxt) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Settings"),
-      ),
-      body: RaisedButton(
-        onPressed: () {
-          DefaultCacheManager manager = new DefaultCacheManager();
-          manager.emptyCache(); //clears all data in cache.
-        },
-        child: const Text('Clear the cache', style: TextStyle(fontSize: 20)),
-      ),
-    );
   }
 }
