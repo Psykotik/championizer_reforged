@@ -7,6 +7,7 @@ import 'package:championizer_reforged/data/championsImage.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:championizer_reforged/style/colors.dart';
+import 'package:animated_dialog_box/animated_dialog_box.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -61,20 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                     context,
                     new MaterialPageRoute(
-                        builder: (context) => new SettingsOnePage()),
-                  );
-                },
-              ),
-              IconButton(
-                icon: Icon(Icons.settings_applications),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    new MaterialPageRoute(
                         builder: (context) => new ParameterScreen()),
                   );
                 },
-              )
+              ),
             ]),
         body: Column(
           children: <Widget>[

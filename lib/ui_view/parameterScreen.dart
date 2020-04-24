@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:animated_dialog_box/animated_dialog_box.dart';
 
 class ParameterScreen extends StatelessWidget {
   @override
@@ -50,11 +51,26 @@ class ParameterScreen extends StatelessWidget {
                         ),
                         title: Text("Clear Cache"),
                         trailing: Icon(Icons.keyboard_arrow_right),
-                        onTap: () {
+                        onTap: () async {
                           DefaultCacheManager manager =
                               new DefaultCacheManager();
                           manager.emptyCache(); //clears all data in cache.
                           print("Cache cleared");
+                          await animated_dialog_box.showCustomAlertBox(
+                              context: ctxt,
+                              firstButton: MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(40),
+                                ),
+                                color: Colors.white,
+                                child: Text('Ok'),
+                                onPressed: () {
+                                  Navigator.of(ctxt).pop();
+                                },
+                              ),
+                              yourWidget: Container(
+                                child: Text('The cache has been cleared'),
+                              ));
                         },
                       ),
                       _buildDivider(),
@@ -97,36 +113,26 @@ class ParameterScreen extends StatelessWidget {
                 ),
                 SwitchListTile(
                   activeColor: Colors.purple,
-                  contentPadding: const EdgeInsets.all(0),
-                  value: true,
+                  value: false,
                   title: Text("Dark mode"),
                   onChanged: null,
                 ),
                 ListTile(
-                  title: Align(
-                    child: new Text("Report / Suggestions"),
-                    alignment: Alignment(-1.12, 0),
-                  ),
+                  title: Text("Report / Suggestions"),
                   trailing: Icon(Icons.keyboard_arrow_right),
                   onTap: () {
                     _launchMail();
                   },
                 ),
                 ListTile(
-                  title: Align(
-                    child: new Text("Github"),
-                    alignment: Alignment(-1.12, 0),
-                  ),
+                  title: Text("Github"),
                   trailing: Icon(Icons.keyboard_arrow_right),
                   onTap: () {
                     _launchGithub();
                   },
                 ),
                 ListTile(
-                  title: Align(
-                    child: new Text("Licences"),
-                    alignment: Alignment(-1.12, 0),
-                  ),
+                  title: Text("Licences"),
                   trailing: Icon(Icons.keyboard_arrow_right),
                   onTap: () {
                     Navigator.push(
