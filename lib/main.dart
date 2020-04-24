@@ -1,6 +1,7 @@
 import 'dart:core';
 import 'package:championizer_reforged/ui_view/parameterScreen.dart';
 import 'package:championizer_reforged/ui_view/randomChampionImage.dart';
+import 'package:championizer_reforged/ui_view/testScren.dart';
 import 'package:flutter/material.dart';
 import 'package:championizer_reforged/data/championsImage.dart';
 import 'package:flutter/services.dart';
@@ -56,6 +57,16 @@ class _MyHomePageState extends State<MyHomePage> {
               // action button
               IconButton(
                 icon: Icon(Icons.settings),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => new SettingsOnePage()),
+                  );
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.settings_applications),
                 onPressed: () {
                   Navigator.push(
                     context,
