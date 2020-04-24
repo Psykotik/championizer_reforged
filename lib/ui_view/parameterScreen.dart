@@ -142,6 +142,23 @@ class ParameterScreen extends StatelessWidget {
                     );
                   },
                 ),
+                ListTile(
+                  title: Text("Version"),
+                  trailing: Text("Alpha",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w300, color: Colors.grey)),
+                  onTap: null,
+                ),
+                Center(
+                  child: Text("Built with Flutter",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w300,
+                        color: Colors.grey,
+                      )),
+                ),
+                Text("Developped by Jordan Lambert, 2020",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w300, color: Colors.grey)),
               ],
             ),
           ),
