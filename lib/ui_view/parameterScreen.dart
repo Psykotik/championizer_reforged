@@ -149,19 +149,33 @@ class ParameterScreen extends StatelessWidget {
                           fontWeight: FontWeight.w300, color: Colors.grey)),
                   onTap: null,
                 ),
-                Center(
-                  child: Text("Built with Flutter",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        color: Colors.grey,
-                      )),
-                ),
-                Text("Developped by Jordan Lambert, 2020",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w300, color: Colors.grey)),
               ],
             ),
           ),
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                width: double.infinity,
+                height: 40,
+                //color: Colors.black,
+                child: Center(
+                  child: Column(
+                    children: <Widget>[
+                      Text("Built with Flutter",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w300,
+                            color: Colors.grey,
+                          )),
+                      Text("Developped by Jordan Lambert, 2020",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w300, color: Colors.grey)),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
