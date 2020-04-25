@@ -3,6 +3,7 @@ import 'package:championizer_reforged/ui_view/parameterScreen.dart';
 import 'package:championizer_reforged/ui_view/randomChampion.dart';
 import 'package:championizer_reforged/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:animated_dialog_box/animated_dialog_box.dart';
 
 class Home extends StatefulWidget {
   final String url;
@@ -143,7 +144,24 @@ class _HomeState extends State<Home> {
           ),
           SizedBox(height: 15),
           GestureDetector(
-            onTap: () {},
+            onTap: () async {
+              await animated_dialog_box.showCustomAlertBox(
+                  context: context,
+                  firstButton: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    color: Colors.white,
+                    child: Text('Ok'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  yourWidget: Container(
+                    child:
+                        Text('This feature is not available yet ! Stay tuned.'),
+                  ));
+            },
             child: Stack(
               children: <Widget>[
                 Padding(
@@ -235,7 +253,24 @@ class _HomeState extends State<Home> {
           ),
           SizedBox(height: 15),
           GestureDetector(
-            onTap: () {},
+            onTap: () async {
+              await animated_dialog_box.showCustomAlertBox(
+                  context: context,
+                  firstButton: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    color: Colors.white,
+                    child: Text('Ok'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  yourWidget: Container(
+                    child:
+                        Text('This feature is not available yet ! Stay tuned.'),
+                  ));
+            },
             child: Stack(
               children: <Widget>[
                 Padding(
@@ -327,7 +362,24 @@ class _HomeState extends State<Home> {
           ),
           SizedBox(height: 15),
           GestureDetector(
-            onTap: () {},
+            onTap: () async {
+              await animated_dialog_box.showCustomAlertBox(
+                  context: context,
+                  firstButton: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    color: Colors.white,
+                    child: Text('Ok'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  yourWidget: Container(
+                    child:
+                        Text('This feature is not available yet ! Stay tuned.'),
+                  ));
+            },
             child: Stack(
               children: <Widget>[
                 Padding(
