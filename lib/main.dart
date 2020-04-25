@@ -1,12 +1,12 @@
 import 'dart:core';
 import 'package:championizer_reforged/ui_view/parameterScreen.dart';
 import 'package:championizer_reforged/ui_view/randomChampionImage.dart';
-import 'package:championizer_reforged/ui_view/testScren.dart';
+import 'package:championizer_reforged/ui_view/testScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:championizer_reforged/data/championsImage.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:championizer_reforged/style/colors.dart';
+import 'package:championizer_reforged/style/colorUI.dart';
 import 'package:animated_dialog_box/animated_dialog_box.dart';
 
 void main() {
@@ -66,6 +66,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),
+              IconButton(
+                icon: Icon(Icons.school),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => new TestScreen()),
+                  );
+                },
+              ),
             ]),
         body: Column(
           children: <Widget>[
@@ -73,11 +83,11 @@ class _MyHomePageState extends State<MyHomePage> {
             //SizedBox(height: 15),
             Padding(
               padding:
-                  const EdgeInsets.only(left: 16, right: 16, bottom: 8, top: 8),
+                  const EdgeInsets.only(left: 32, right: 32, bottom: 8, top: 8),
               child: Container(
                 height: 48,
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Color(0xff03A9F4),
                   borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(

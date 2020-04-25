@@ -5,6 +5,7 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:animated_dialog_box/animated_dialog_box.dart';
+import 'package:championizer_reforged/style/colorUI.dart';
 
 class ParameterScreen extends StatelessWidget {
   @override
@@ -31,12 +32,12 @@ class ParameterScreen extends StatelessWidget {
                 Text(
                   "General Settings",
                   style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.indigo,
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xff03A9F4),
                   ),
                 ),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: 10.0),
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(32.0, 8.0, 32.0, 16.0),
@@ -47,7 +48,7 @@ class ParameterScreen extends StatelessWidget {
                       ListTile(
                         leading: Icon(
                           Icons.cached,
-                          color: Colors.purple,
+                          color: Color(0xff03A9F4),
                         ),
                         title: Text("Clear Cache"),
                         trailing: Icon(Icons.keyboard_arrow_right),
@@ -77,7 +78,7 @@ class ParameterScreen extends StatelessWidget {
                       ListTile(
                         leading: Icon(
                           FontAwesomeIcons.language,
-                          color: Colors.purple,
+                          color: Color(0xff03A9F4),
                         ),
                         title: Text("Change Language"),
                         trailing: Icon(Icons.keyboard_arrow_right),
@@ -93,7 +94,7 @@ class ParameterScreen extends StatelessWidget {
                       ListTile(
                         leading: Icon(
                           Icons.rate_review,
-                          color: Colors.purple,
+                          color: Color(0xff03A9F4),
                         ),
                         title: Text("Review the app"),
                         trailing: Icon(Icons.keyboard_arrow_right),
@@ -102,17 +103,17 @@ class ParameterScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: 10.0),
                 Text(
                   "Other Settings",
                   style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.indigo,
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xff03A9F4),
                   ),
                 ),
                 SwitchListTile(
-                  activeColor: Colors.purple,
+                  activeColor: Color(0xff03A9F4),
                   value: false,
                   title: Text("Dark mode"),
                   onChanged: null,

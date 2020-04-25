@@ -24,6 +24,10 @@ class LicenceScreen extends StatelessWidget {
               title: Text(
                   'https://github.com/lohanidamodar/flutter_ui_challenges'),
             ),
+            ListTile(
+              title: Text(
+                  'Champion Icon made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>'),
+            ),
           ],
         ));
   }
