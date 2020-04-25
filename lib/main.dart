@@ -1,15 +1,24 @@
 import 'dart:core';
 import 'package:championizer_reforged/ui_view/home.dart';
 import 'package:championizer_reforged/ui_view/testScreen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:appcenter/appcenter.dart';
+import 'package:appcenter_analytics/appcenter_analytics.dart';
+import 'package:appcenter_crashes/appcenter_crashes.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(new MyApp());
   });
+  final ios = defaultTargetPlatform == TargetPlatform.iOS;
+
+  var app_secret = ios ? "iOSGuid" : "AndroidGuid";
+  await AppCenter.start(
+      app_secret, [AppCenterAnalytics.id, AppCenterCrashes.id]);
 }
 
 class MyApp extends StatelessWidget {
