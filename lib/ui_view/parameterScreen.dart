@@ -158,19 +158,19 @@ class ParameterScreen extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: Container(
                 width: double.infinity,
-                height: 40,
+                height: 60,
                 //color: Colors.black,
                 child: Center(
                   child: Column(
                     children: <Widget>[
                       Text("Built with Flutter",
                           style: TextStyle(
-                            fontWeight: FontWeight.w300,
+                            fontWeight: FontWeight.w200,
                             color: Colors.grey,
                           )),
                       Text("Developped by Jordan Lambert, 2020",
                           style: TextStyle(
-                              fontWeight: FontWeight.w300, color: Colors.grey)),
+                              fontWeight: FontWeight.w200, color: Colors.grey)),
                     ],
                   ),
                 ),
