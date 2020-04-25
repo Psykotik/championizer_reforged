@@ -194,12 +194,15 @@ Container _buildDivider() {
 }
 
 _launchMail() async {
-  const url =
-      'mailto:dev.jordanlambert@gmail.com?subject=Championizer report/suggestion&body=Version : Alpha';
-  if (await canLaunch(url)) {
-    await launch(url);
+  final String subject = "Championizer Report / Suggestion";
+  final String stringText = "\n\n\nVersion : Alpha";
+
+  String uri =
+      'mailto:dev.jordanlambert@gmail.com?subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(stringText)}';
+  if (await canLaunch(uri)) {
+    await launch(uri);
   } else {
-    throw 'Could not launch $url';
+    throw 'Could not launch $uri';
   }
 }
 
