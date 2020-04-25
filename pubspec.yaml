@@ -26,9 +26,6 @@ dependencies:
   url_launcher: ^5.4.5
   animated_dialog_box: ^0.0.2
   hexcolor: ^1.0.1
-  appcenter: ^0.2.1
-  appcenter_analytics: ^0.2.1
-  appcenter_crashes: ^0.2.1
 
 
   # The following adds the Cupertino Icons font to your application.
